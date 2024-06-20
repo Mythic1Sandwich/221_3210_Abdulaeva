@@ -24,7 +24,7 @@ private slots:
 
 private:
     QGridLayout *gridLayout;
-    std::vector<QLineEdit*> promoCards;
+   // std::vector<QLineEdit*> promoCards;
     std::vector<std::string> promoCodes;
     QPushButton *revealButton;
 };
