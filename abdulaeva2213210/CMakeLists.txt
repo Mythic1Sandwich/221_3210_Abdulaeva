@@ -44,6 +44,14 @@ else()
 endif()
 
 target_link_libraries(abdulaeva2213210 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+include(FindOpenSSL)
+find_package(OpenSSL)
+target_include_directories( abdulaeva2213210
+      PRIVATE
+      C:/Qt/Tools/OpenSSLv3/Win_x64/include/openssl)
+target_link_libraries( abdulaeva2213210
+    PRIVATE
+    C:/Qt/Tools/OpenSSLv3/Win_x64/lib/libcrypto.lib)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
