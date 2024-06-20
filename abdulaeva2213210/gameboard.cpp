@@ -1,4 +1,3 @@
-
 #include "gameboard.h"
 #include "mainwindow.h"
 #include <QRandomGenerator>
@@ -10,7 +9,7 @@ GameBoard::GameBoard(QWidget *parent) : QWidget(parent), gridLayout(new QGridLay
         newPromoCard->setReadOnly(true);
         gridLayout->addWidget(newPromoCard, i / 3, i % 3);
 
-        std::string promoCode = MainWindow::generateRandomString(10);
+        std::string promoCode = MainWindow::generateRandomString(4);
         promoCodes.push_back(promoCode);
         newPromoCard->setText(QString::fromStdString(promoCode));
         promoCards.push_back(newPromoCard);
@@ -22,13 +21,13 @@ GameBoard::GameBoard(QWidget *parent) : QWidget(parent), gridLayout(new QGridLay
 }
 
 void GameBoard::onRevealButtonClicked() {
+
     if (!promoCards.empty()) {
         int randomIndex = QRandomGenerator::global()->bounded(promoCards.size());
         promoCards[randomIndex]->setEchoMode(QLineEdit::Normal);
         promoCards[randomIndex]->setText(QString::fromStdString(promoCodes[randomIndex]));
     }
 
-    // Добавляем новую карточку, если их меньше девяти
     if (promoCards.size() < 9) {
         addNewPromoCard();
     }
@@ -39,7 +38,7 @@ void GameBoard::addNewPromoCard() {
     newPromoCard->setEchoMode(QLineEdit::Password);
     newPromoCard->setReadOnly(true);
 
-    std::string promoCode = MainWindow::generateRandomString(10);
+    std::string promoCode = MainWindow::generateRandomString(4);
     promoCodes.push_back(promoCode);
     newPromoCard->setText(QString::fromStdString(promoCode));
 
