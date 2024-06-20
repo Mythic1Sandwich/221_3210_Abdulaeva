@@ -18,21 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-std::string MainWindow::generateRandomString(size_t length) {
-    const char charset[] =
-        "0123456789"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "abcdefghijklmnopqrstuvwxyz";
-    std::string randomString;
-    std::mt19937 rng(std::random_device{}());
-    std::uniform_int_distribution<> dist(0, sizeof(charset) - 2);
 
-    for (size_t i = 0; i < length; ++i) {
-        randomString += charset[dist(rng)];
-    }
-
-    return randomString;
-}
 void MainWindow::onLoginButtonClicked() {
     QString pinCode = ui->edtPin->text();
     if (pinCode == "1234") {
